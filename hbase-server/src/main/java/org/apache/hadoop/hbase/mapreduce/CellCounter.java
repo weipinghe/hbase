@@ -238,6 +238,7 @@ public class CellCounter extends Configured implements Tool {
     if (filterCriteria == null) return null;
     if (filterCriteria.startsWith("^")) {
       String regexPattern = filterCriteria.substring(1, filterCriteria.length());
+      // Only support string filter
       rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator(regexPattern));
     } else {
       rowFilter = new PrefixFilter(Bytes.toBytes(filterCriteria));
