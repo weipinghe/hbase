@@ -241,6 +241,8 @@ public class CellCounter extends Configured implements Tool {
       // Only support string filter
       rowFilter = new RowFilter(CompareFilter.CompareOp.EQUAL, new RegexStringComparator(regexPattern));
     } else {
+      // This PrefixFilter takes one argument: a prefix of a row key. 
+      // It returns only those key-values present in a row that starts with the specified row prefix
       rowFilter = new PrefixFilter(Bytes.toBytes(filterCriteria));
     }
     return rowFilter;
